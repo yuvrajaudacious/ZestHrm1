@@ -1,0 +1,35 @@
+
+.logo{
+width: 120px;
+    margin-top: 216px;
+    margin-left: 140px;
+}
+    .Color{
+        color: aliceblue;
+    }
+    .h6{
+        margin-top: 0px;
+
+        margin-left: 140px;
+        font-size: 13px;
+    }
+    .h1{
+        margin-left: 140px;
+        font-size: 50px;
+        margin-top: -5px;
+
+    }
+    .p{
+        font-size: 12px;
+        margin-left: 140px;
+        margin-top: -15px;
+color: rgb(233, 216, 216);
+    }
+    .btn{
+        margin-left: 140px;
+width: 40px;
+    }
+    .bttn{
+        width: 130px;
+
+    }
