@@ -26,8 +26,6 @@ const Contain = () => {
           <Button className={Styles.bttn} type="primary" >
       Login
     </Button>
-    <Button className={Styles.bttn} type="primary" >
-Signup    </Button>
               </Space>
           </div>
         </div>

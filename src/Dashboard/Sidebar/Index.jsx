@@ -4,26 +4,33 @@ import {
   FieldTimeOutlined,
   SettingOutlined,
   LogoutOutlined,
+  DeleteTwoTone,
 } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, theme, Modal } from "antd";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Table from "../Table";
+import Tale from "../Table";
+import Profile from "../Profile/Index";
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   const showDeleteConfirm = () => {
     confirm({
-      title: "Are you sure delete this task?",
-      icon: <ExclamationCircleFilled />,
-      content: "Some descriptions",
+      title: "Are you sure Logout Your Account",
+      icon: <DeleteTwoTone />,
+      content: "",
       okText: "Yes",
       okType: "danger",
       cancelText: "No",
       onOk() {
         console.log("OK");
+        navigate("/");
+
       },
       onCancel() {
         console.log("Cancel");
@@ -32,12 +39,12 @@ const Sidebar = () => {
   };
   const items = [
     {
-      label: <Link to={"/"}>Dashboard</Link>,
+      label: <Link to={""}>Dashboard</Link>,
       key: "1",
       icon: <UserOutlined />,
     },
     {
-      label: <Link to={"/about"}>TimeSheet</Link>,
+      label: <Link to={""}>TimeSheet</Link>,
       key: "2",
       icon: <FieldTimeOutlined />,
     },
@@ -47,10 +54,15 @@ const Sidebar = () => {
       icon: <SettingOutlined />,
     },
     {
-      label: <Link to="">Logout</Link>,
+      label: <Link to="">Profile</Link>,
       key: "4",
+      icon: <UserOutlined />,
+    },
+    {
+      label: <Link to="">Logout</Link>,
+      key: "5",
       icon: <LogoutOutlined />,
-      onclick: () => showDeleteConfirm(),
+      onClick: () => showDeleteConfirm(),
     },
   ];
   const { confirm } = Modal;
@@ -116,12 +128,11 @@ const Sidebar = () => {
               background: colorBgContainer,
             }}
           >
-            Bill is a cat.
+            <Profile/>
+            {/* <Tale/> */}
           </div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2023 Created by Ant UED
-        </Footer>
+     
       </Layout>
     </Layout>
   );
