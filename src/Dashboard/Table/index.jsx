@@ -12,7 +12,7 @@ interface DataType {
 
 const columns: ColumnsType<DataType> = [
   {
-    title: 'RowHead',
+    title: 'Sr.No',
     dataIndex: 'key',
     rowScope: 'row',
   },
@@ -23,12 +23,12 @@ const columns: ColumnsType<DataType> = [
     render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Clockinage',
+  title: 'Clock In   ',
     dataIndex: 'age',
     key: 'age',
   },
   {
-    title: 'Break age',
+    title: 'Break Time',
     dataIndex: 'address',
     key: 'address',
   },
@@ -40,7 +40,7 @@ const columns: ColumnsType<DataType> = [
 
   },
   {
-    title: 'Totle Time',
+    title: 'Totel Time',
     key: 'toteltime',
         dataIndex: 'toteltime',
 
@@ -87,6 +87,7 @@ const data: DataType[] = [
   },
   {
     key: '5',
+    
     name: 'Joe Black',
     age: "9:30",
     address: '1:00Hrs',
@@ -96,6 +97,7 @@ const data: DataType[] = [
   },
   {
     key: '6',
+    avatar:"https://ca.slack-edge.com/T01TRSXL4NS-U03BAAA889Y-03a953eb03c3-512",
     name: 'Joe Black',
     age: "9:30",
     address: '1:00Hrs',

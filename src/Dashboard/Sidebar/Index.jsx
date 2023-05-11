@@ -6,14 +6,18 @@ import {
   LogoutOutlined,
   DeleteTwoTone,
 } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, theme, Modal } from "antd";
-import { ExclamationCircleFilled } from "@ant-design/icons";
 
+import { Breadcrumb, Layout, Menu, theme, Modal, Avatar, Space, Input } from "antd";
+// import { ExclamationCircleFilled } from "@ant-design/icons";
+import Styles from "./style.module.css";
+import { AudioOutlined } from '@ant-design/icons';
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Table from "../Table";
+// import Table from "../Table";
 import Tale from "../Table";
 import Profile from "../Profile/Index";
+// import Search from "antd/es/transfer/search";
+// import Adduser from "../../Page/Adduser";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -22,7 +26,7 @@ const Sidebar = () => {
   const showDeleteConfirm = () => {
     confirm({
       title: "Are you sure Logout Your Account",
-      icon: <DeleteTwoTone />,
+      icon: <LogoutOutlined />,
       content: "",
       okText: "Yes",
       okType: "danger",
@@ -30,7 +34,6 @@ const Sidebar = () => {
       onOk() {
         console.log("OK");
         navigate("/");
-
       },
       onCancel() {
         console.log("Cancel");
@@ -71,7 +74,17 @@ const Sidebar = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-
+  
+  const { Search } = Input;
+  const suffix = (
+    <AudioOutlined
+      style={{
+        fontSize: 16,
+        color: '#1890ff',
+      }}
+    />
+  );
+  const onSearch = (value) => console.log(value);
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider
@@ -95,7 +108,31 @@ const Sidebar = () => {
         />
       </Sider>
       <Layout className="site-layout">
-        <Header style={{ padding: 0, background: colorBgContainer }} />
+        <Header style={{ height: 70, background: colorBgContainer }}>
+          <Avatar.Group >
+            <Link to="/">
+            <Avatar className={Styles.avatar} src="https://ca.slack-edge.com/T01TRSXL4NS-U03BAAA889Y-03a953eb03c3-512" />
+            </Link>
+          <div> 
+          <h4 className={Styles.text}>Yuvraj Baloriya</h4>
+          </div> 
+          </Avatar.Group>
+        <Space direction="vertical">
+    {/* <Search
+      placeholder="input search text"
+      onSearch={onSearch}
+      style={{
+        width: 200,
+    //   }} */}
+
+    <Search className={Styles.search}
+      placeholder="input search text"
+      size="large"
+      suffix={suffix}
+      onSearch={onSearch}
+    />
+  </Space>
+        </Header>
         <Content style={{ margin: "0 16px" }}>
           <Breadcrumb
             items={[
@@ -128,11 +165,11 @@ const Sidebar = () => {
               background: colorBgContainer,
             }}
           >
-            <Profile/>
-            {/* <Tale/> */}
+            <Profile /> 
+            {/* <Adduser /> */}
+            <Tale />
           </div>
         </Content>
-     
       </Layout>
     </Layout>
   );

@@ -15,19 +15,7 @@ const Contain = () => {
             badges gamification system!
           </p>
 
-          <div className={Styles.btn}>
-          <Space
-              direction="horizontal"
-
-    style={{
-      width: '100%',
-    }}
-  >
-          <Button className={Styles.bttn} type="primary" >
-      Login
-    </Button>
-              </Space>
-          </div>
+          
         </div>
       </div>{" "}
     </div>

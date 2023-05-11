@@ -3,19 +3,18 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 
 import Styles from "./style.module.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import Cookies from "js-cookie";
 
 const Login = () => {
   const navigate = useNavigate();
   const onFinish = async (values) => {
     try {
-      const { data } = await axios.post(`https://reqres.in/api/login`, values);
+      const { data } = await axios.post(`https://dummyjson.com/products/add`, values);
       localStorage.setItem("token", data.token);
       if (
-        data.token === "QpwL5tke4Pnpja7X4" &&
-        values.email === "eve.holt@reqres.in" &&
-        values.password === "cityslicka"
+        values.email === "yuvraj@gmail.com" &&
+        values.password === "yuvraj123"
       ) {
         navigate("/about");
         message.success("Successfuly login");
@@ -93,9 +92,9 @@ const Login = () => {
           <Checkbox>Remember me</Checkbox>
         </Form.Item>
 
-        <a className={`login-form-forgot ${Styles.forget}`} href="">
+        <Link className={`login-form-forgot ${Styles.forget}`} to="/Varicode">
           Forgot password
-        </a>
+        </Link>
       </Form.Item>
 
       <Form.Item>

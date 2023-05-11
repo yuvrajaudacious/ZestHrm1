@@ -1,6 +1,6 @@
 import React from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Card, Checkbox, Form, Input, message } from 'antd';
+import { Button, Card, Checkbox, Form, Input, InputNumber, message } from 'antd';
 import Styles from "./style.module.css";
 import Contain from '../../Contain';
 import { useNavigate } from 'react-router';
@@ -11,17 +11,17 @@ const Varicode = () => {
   //   console.log('Received values of form: ', values);
   // };
 
- 
   const navigate = useNavigate();
   const onFinish = async (values) => {
     try {
       const { data } = await axios.post(`https://dummyjson.com/products/add`, values);
       localStorage.setItem("token", data.token);
       if (
-        values.email === "yuvraj@gmail.com" 
+        values.password === "12345678"
       ) {
-        navigate("/setpassword");
-        message.success("Send a code Cheek ur Email ");
+        navigate("/about");
+        message.success("Successfuly login");
+        console.log("right id password");
       } else {
         message.error("Please enter correct email or password");
       }
@@ -41,11 +41,11 @@ const Varicode = () => {
       title={
         <>
           <img
-            src="favicon.png"
+            src="zestlogo.png"
             alt="login logo"
-            style={{ width: "rem" }}
-          />
-          <h3 style={{ marginLeft: "90" }}>Varifaction Code</h3>
+            style={{ width: "7rem" }}
+          />{" "}
+          <h3 style={{ marginRight: "7rem" }}>Set Password</h3>
         </>
       }
       bordered
@@ -59,27 +59,47 @@ const Varicode = () => {
         remember: true,
       }}
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}    >
-    <Form.Item
-      name="email"
-      rules={[
+      onFinishFailed={onFinishFailed}
+        >
+   <Form.Item
+        name="password"
+        rules={[
           {
             required: true,
-            message: "Email is required",
-          },
-          {
-            type: "email",
-            message: "Email is not valid"
+            message: 'Please input your password!',
           },
         ]}
-    >
-      <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
-    </Form.Item>
- 
-  
+        hasFeedback
+      >
+        <Input.Password
+         placeholder='Enter  Password'/>
+      </Form.Item>
 
+      <Form.Item
+        name="confirm"
+        dependencies={['password']}
+        hasFeedback
+        rules={[
+          {
+            required: true,
+            message: 'Please confirm your password!',
+          },
+          ({ getFieldValue }) => ({
+            validator(_, value) {
+              if (!value || getFieldValue('password') === value) {
+                return Promise.resolve();
+              }
+              return Promise.reject(new Error('The two passwords that you entered do not match!'));
+            },
+          }),
+        ]}
+      >
+        <Input.Password
+         
+        placeholder='Enter Confirm Password' />
+      </Form.Item>
       
-
+<Input placeholder='Enter Code'/>
     <Form.Item>
     <Button
             type="primary"
