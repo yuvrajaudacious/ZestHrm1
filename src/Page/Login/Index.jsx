@@ -16,7 +16,7 @@ const Login = () => {
         values.email === "yuvraj@gmail.com" &&
         values.password === "yuvraj123"
       ) {
-        navigate("/about");
+        navigate("/dashboard");
         message.success("Successfuly login");
         console.log("right id password");
       } else {

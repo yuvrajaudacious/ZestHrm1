@@ -1,11 +1,11 @@
-import {
-  HomeOutlined,
-  UserOutlined,
-  FieldTimeOutlined,
-  SettingOutlined,
-  LogoutOutlined,
-  DeleteTwoTone,
-} from "@ant-design/icons";
+  import {
+    HomeOutlined,
+    UserOutlined,
+    FieldTimeOutlined,
+    SettingOutlined,
+    LogoutOutlined,
+    DeleteTwoTone,
+  } from "@ant-design/icons";
 
 import { Breadcrumb, Layout, Menu, theme, Modal, Avatar, Space, Input } from "antd";
 // import { ExclamationCircleFilled } from "@ant-design/icons";
@@ -16,6 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 // import Table from "../Table";
 import Tale from "../Table";
 import Profile from "../Profile/Index";
+import StopWatch from "../TimeSheet/StopWatch/Index";
 // import Search from "antd/es/transfer/search";
 // import Adduser from "../../Page/Adduser";
 
@@ -84,7 +85,7 @@ const Sidebar = () => {
       }}
     />
   );
-  const onSearch = (value) => console.log(value);
+    const onSearch = (value) => console.log(value);
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider
@@ -165,9 +166,7 @@ const Sidebar = () => {
               background: colorBgContainer,
             }}
           >
-            <Profile /> 
-            {/* <Adduser /> */}
-            <Tale />
+          <StopWatch/>
           </div>
         </Content>
       </Layout>

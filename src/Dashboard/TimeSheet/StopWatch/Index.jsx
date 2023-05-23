@@ -1,11 +1,7 @@
-import { Button, Space } from "antd";
+import { Button, Card, Space, Table } from "antd";
 import React, { useState, useRef } from "react";
-import Styles from "./styles.module.css";
-import {
-  ClockCircleOutlined
-} from "@ant-design/icons";
-// import Styles from "./styles.module.css";
-
+import { ClockCircleOutlined, FieldTimeOutlined } from "@ant-design/icons";
+import Styles from "./style.module.css";
 const StopWatch = () => {
   const [disable, setDisable] = useState(0);
   const [times, setTimes] = useState(0);
@@ -46,16 +42,50 @@ const StopWatch = () => {
 
     return `${getHours} : ${getMinutes} : ${getSeconds}`;
   };
-
+  const dataSource = [
+    {
+      key: "1",
+      name: `${times}`,
+      age: `${times}`,
+      address: `${times}`,
+    },
+    {
+      key: "2",
+      name: `${times}`,
+      age: `${times}`,
+      address: `${times}`,
+    },
+  ];
+  const columns = [
+    {
+      title: "Start Time",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Out Time",
+      dataIndex: "age",
+      key: "age",
+    },
+    {
+      title: "Break Time",
+      dataIndex: "address",
+      key: "address",
+    },
+  ];
   return (
-    <>
-    <div className={Styles.bttn}>
-      <div className={Styles.time}>
+    <div className={Styles.bg}>
+      <div className={Styles.text}>
+        <h1>
+          TimeSheet <FieldTimeOutlined />
+        </h1>
+      </div>
+      {/* <div className="">
 
           <b>{formatTime()}</b>
-      </div>
-       
-      <div className="">
+      </div> */}
+
+      <Card hoverable className={Styles.Card1}>
         <Button
           type="primary"
           onClick={() => {
@@ -63,8 +93,9 @@ const StopWatch = () => {
             time();
           }}
           disabled={disable}
-        ><ClockCircleOutlined />
-           Clock In
+        >
+          <ClockCircleOutlined />
+          Clock In
         </Button>
 
         {/* <p>ed{times}</p> */}
@@ -78,48 +109,61 @@ const StopWatch = () => {
         >
           Clock Out
         </Button>
+      </Card>
+
+      <Card hoverable className={Styles.Card2}>
+        <Button
+          type="primary"
+          onClick={() => {
+            handleStart();
+            time();
+          }}
+          disabled={disable}
+        >
+          <ClockCircleOutlined /> Break In
+        </Button>
+
+        {/* <p>ed{times}</p> */}
+
+        <Button
+          type="primary"
+          onClick={() => {
+            handlePause();
+            time();
+          }}
+        >
+          Break Out{" "}
+        </Button>
+      </Card>
+      <div className={Styles.timercard}>
+        <Card hoverable className={Styles.total}>
+          <div>
+            <h1>
+              Timer
+              <p>{formatTime()}</p>
+            </h1>
+          </div>
+        </Card>
+        <Card hoverable className={Styles.Break}>
+          <div>
+            <h1>
+              Break Timer
+              <p>{formatTime()}</p>
+            </h1>
+          </div>
+        </Card>
+          <div className={Styles.Totaltime}>
+            <h1>
+              Total Time
+              <p>{formatTime()}</p>
+            </h1>
+          </div>{" "}
       </div>
 
-      {/* <p> </p>
-        <button className="btn btn-dark" onClick={time}>
-          Clock Out
-        </button>  */}  
-
+      <div className={Styles.table}>
+        <Table dataSource={dataSource} columns={columns} />
+      </div>
     </div>
-    <div className={Styles.btn}>
-      <div className={Styles.time}>
-        <b></b>
-          <b>{formatTime()}</b>
-      </div>
-      <Space>
-       
-      <div className={Styles.bbb}>
-        <Button
-
-          type="primary"
-          onClick={() => {
-            handleStart();
-            time();
-          }}
-          disabled={disable}
-        >
-<ClockCircleOutlined />           Break In
-        </Button>
-
-        {/* <p>ed{times}</p> */}
-
-        <Button
-          type="primary"
-          onClick={() => {
-            handlePause();
-            time();
-          }}
-        >
-Break Out        </Button>
-      </div>
-        </Space>
-      </div>
-    </>
   );
 };
 

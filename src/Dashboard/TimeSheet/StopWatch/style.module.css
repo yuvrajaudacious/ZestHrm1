@@ -1,0 +1,55 @@
+.bg {
+    /* background-image: url(https://www.vhv.rs/dpng/d/540-5408278_transparent-countdown-png-countdown-timer-gif-for-powerpoint.png); */
+}
+
+.text {
+    font-size: 34px;
+}
+
+.img {
+    width: 100px;
+}
+
+.Card1 {
+    width: 250px;
+    text-align: center;
+    margin-left: 500px;
+    margin-top: -100px;
+
+}
+
+.Card2 {
+    width: 255px;
+    text-align: center;
+    margin-left: 770px;
+    margin-top: -82.5px;
+
+}
+
+.total {
+    text-align: center;
+    height: 120px;
+    width: 150px;
+
+}
+
+.Break {
+    text-align: center;
+    height: 120px;
+    width: 150px;
+    margin-left: 200px;
+    margin-top: -120px;
+}
+.timercard{
+    margin-top: 20px;
+}
+.table{
+    margin-top: 40px;
+}
+.Totaltime{
+    font-size: 20px;
+   
+    width: 150px;
+    margin-left: 700px;
+    margin-top: -120px;
+}
